@@ -1,4 +1,4 @@
-import Development from './Development';
+import Development from './pages/about-us-our-team/our-story/Development';
 
 function App() {
   return (
