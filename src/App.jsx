@@ -1,4 +1,4 @@
-import Development from './pages/about-us-our-team/our-story/Development';
+import Development from './pages/about-us-our-team/our-story';
 
 function App() {
   return (
