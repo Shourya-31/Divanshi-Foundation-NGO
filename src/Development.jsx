@@ -1,4 +1,3 @@
-# Our Story
 import React from 'react';
 
 const milestones = [
@@ -91,4 +90,4 @@ export default function Development() {
       </div>
     </section>
   );
-} 
+}
