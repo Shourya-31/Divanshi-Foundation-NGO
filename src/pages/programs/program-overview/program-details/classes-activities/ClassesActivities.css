@@ -1,0 +1,48 @@
+.classes-activities-section {
+  padding: 70px 0;
+  background: var(--paper);
+}
+
+.classes-activities-section .section-intro {
+  max-width: 700px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.activity-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.activity-card h3 {
+  margin-bottom: 14px;
+}
+
+.activity-card p {
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.activity-card ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.activity-card li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+}
