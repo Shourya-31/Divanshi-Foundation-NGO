@@ -93,3 +93,181 @@ body {
   .impact-stat:last-child { border-bottom: 0; }
   .section-block { padding-bottom: 4rem !important; }
 }
+/* ================================
+   VOLUNTEER SYSTEM
+   ================================ */
+
+.volunteer-system {
+  margin-top: 3rem;
+}
+
+.volunteer-intro {
+  max-width: 700px;
+}
+
+.volunteer-opportunities {
+  margin-top: 2rem;
+}
+
+.volunteer-role-card {
+  height: 100%;
+  padding: 1.75rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 12px;
+  border: 1px solid rgba(33, 49, 45, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.volunteer-role-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(33, 49, 45, 0.12);
+}
+
+.volunteer-role-card.selected {
+  border: 2px solid var(--terracotta);
+}
+
+.role-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: #f0ca78;
+  font-size: 1.3rem;
+}
+
+.volunteer-role-card h3 {
+  margin-bottom: 0.7rem;
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+}
+
+.volunteer-role-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.role-details {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #dce4d6;
+  color: var(--ink);
+  border: 2px solid var(--terracotta);
+  border-radius: 12px;
+}
+
+.role-details h3 {
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+}
+
+.role-details p {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.role-details h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+
+.role-details .eyebrow {
+  color: var(--terracotta);
+}
+
+.role-detail-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.role-detail-list li {
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.volunteer-application {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(255, 253, 248, 0.08);
+  border-radius: 12px;
+}
+
+.volunteer-application h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.volunteer-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding: 0.9rem 1rem;
+  color: var(--paper);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #72837b;
+  border-radius: 0;
+}
+
+.volunteer-form textarea::placeholder {
+  color: #9eada5;
+}
+
+.volunteer-form textarea:focus {
+  outline: 0;
+  border-color: #f0ca78;
+}
+
+.application-id {
+  display: inline-block;
+  margin: 0.5rem 0 1rem;
+  padding: 0.5rem 0.8rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.next-steps {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+}
+
+.next-steps h4 {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.next-steps ol {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
+.next-steps li {
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .volunteer-role-card {
+    padding: 1.4rem;
+  }
+
+  .role-details,
+  .volunteer-application {
+    padding: 1.4rem;
+  }
+}

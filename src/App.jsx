@@ -11,7 +11,68 @@ const programs = [
   ['School partnerships', 'Long-term collaboration with teachers to strengthen classrooms and share practical resources.'],
   ['Future skills', 'Mentorship and creative workshops that help young people build their next chapter.'],
 ]
-
+const volunteerRoles = [
+  {
+    title: 'Teaching Volunteer',
+    icon: '📚',
+    description: 'Support children with learning activities and basic subjects.',
+    tasks: [
+      'Help children with basic subjects',
+      'Conduct learning activities',
+      'Assist teachers during sessions',
+    ],
+  },
+  {
+    title: 'Event Volunteer',
+    icon: '🎪',
+    description: 'Help organise foundation events and community activities.',
+    tasks: [
+      'Help organise events',
+      'Manage participants',
+      'Distribute learning and event materials',
+    ],
+  },
+  {
+    title: 'Fundraising Volunteer',
+    icon: '💛',
+    description: 'Support campaigns that help the foundation raise resources.',
+    tasks: [
+      'Support donation campaigns',
+      'Communicate with potential donors',
+      'Help promote fundraising activities',
+    ],
+  },
+  {
+    title: 'Social Media Volunteer',
+    icon: '📱',
+    description: 'Help share the foundation’s work through digital platforms.',
+    tasks: [
+      'Create social media posts',
+      'Share campaigns and updates',
+      'Promote foundation activities',
+    ],
+  },
+  {
+    title: 'Field Volunteer',
+    icon: '🤝',
+    description: 'Support community visits, surveys and awareness activities.',
+    tasks: [
+      'Participate in community visits',
+      'Assist with surveys',
+      'Support awareness drives and distributions',
+    ],
+  },
+  {
+    title: 'Content Volunteer',
+    icon: '✍️',
+    description: 'Help communicate stories and updates through written content.',
+    tasks: [
+      'Write articles and stories',
+      'Create captions',
+      'Help prepare reports',
+    ],
+  },
+]
 const faqs = [
   ['How can I volunteer?', 'Choose a role that matches your time and skills, then send us the short application below.'],
   ['Where does the foundation work?', 'We partner with children, schools, and local educators in communities where learning support can make a lasting difference.'],
@@ -20,11 +81,16 @@ const faqs = [
 
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [selectedRole, setSelectedRole] = useState(null)
+  const [applicationId, setApplicationId] = useState('')
 
   function handleVolunteerSubmit(event) {
-    event.preventDefault()
-    setFormSubmitted(true)
-  }
+  event.preventDefault()
+
+  const id = `VOL-${Date.now().toString().slice(-6)}`
+  setApplicationId(id)
+  setFormSubmitted(true)
+}
 
   return (
     <main className="min-vh-100 bg-sand">
@@ -112,8 +178,250 @@ function App() {
 
       <section id="transparency" className="container section-block py-5"><div className="row g-5 align-items-center"><div className="col-lg-6"><p className="eyebrow mb-3">Reports & transparency</p><h2 className="section-title">Trust is something we practise.</h2><p className="body-copy mt-4">We share the outcomes, lessons, and decisions behind our work so supporters can see where care becomes change.</p><a className="btn btn-outline-dark mt-2" href="#contact">Explore our reports</a></div><div className="col-lg-5 offset-lg-1"><div className="report-note"><span className="report-year">2025</span><strong>Annual impact report</strong><span>Coming soon</span></div></div></div></section>
 
-      <section id="volunteer" className="volunteer-band py-5"><div className="container py-4"><div className="row g-5"><div className="col-lg-5"><p className="eyebrow mb-3">Volunteer</p><h2 className="section-title">Bring your time. Bring your way of helping.</h2><p className="body-copy mt-4">There is no single kind of volunteer. Tell us what you care about and we will help find a meaningful fit.</p></div><div className="col-lg-6 offset-lg-1">{formSubmitted ? <div className="confirmation"><span className="confirmation-mark">✓</span><h3>Thank you for stepping forward.</h3><p>We have received your interest and will be in touch with the next steps.</p><button className="btn btn-outline-dark" type="button" onClick={() => setFormSubmitted(false)}>Send another response</button></div> : <form className="volunteer-form" onSubmit={handleVolunteerSubmit}><label htmlFor="name">Your name</label><input id="name" name="name" required placeholder="e.g. Aditi Sharma" /><label htmlFor="role">I would like to help with</label><select id="role" name="role" defaultValue="" required><option value="" disabled>Choose a role</option><option>Teaching and mentoring</option><option>Events and outreach</option><option>Design, technology, or communications</option><option>Operations and fundraising</option></select><label htmlFor="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com" /><button className="btn btn-terracotta btn-lg mt-2" type="submit">Submit interest</button></form>}</div></div></div></section>
+      <section id="volunteer" className="volunteer-band py-5">
+  <div className="container py-4">
 
+    <div className="row g-5">
+      <div className="col-lg-5">
+        <p className="eyebrow mb-3">Volunteer</p>
+
+        <h2 className="section-title">
+          Bring your time. Bring your way of helping.
+        </h2>
+
+        <p className="body-copy mt-4">
+          Choose an opportunity that matches your interests, skills,
+          and availability. Every contribution helps us create
+          meaningful change in the community.
+        </p>
+      </div>
+
+      <div className="col-lg-7">
+        <div className="volunteer-system">
+
+          <p className="eyebrow mb-3">
+            Volunteer Opportunities
+          </p>
+
+          <h3 className="mb-4">
+            Choose a role that fits you
+          </h3>
+
+          <div className="row g-3 volunteer-opportunities">
+
+            {volunteerRoles.map((role) => (
+              <div className="col-md-6" key={role.title}>
+                <article
+                  className={`volunteer-role-card ${
+                    selectedRole?.title === role.title ? 'selected' : ''
+                  }`}
+                >
+                  <div className="role-icon">
+                    {role.icon}
+                  </div>
+
+                  <h3>{role.title}</h3>
+
+                  <p>{role.description}</p>
+
+                  <button
+  type="button"
+  className="btn btn-outline-dark"
+  onClick={() => {
+    setSelectedRole(role)
+    setFormSubmitted(false)
+  }}
+>
+  Choose this role
+</button>
+                </article>
+              </div>
+            ))}
+
+          </div>
+
+          {selectedRole && (
+            <div className="role-details">
+
+              <p className="eyebrow mb-2">
+                Selected Role
+              </p>
+
+              <h3>{selectedRole.title}</h3>
+
+              <p>
+                {selectedRole.description}
+              </p>
+
+              <h4 className="mt-4">
+                What you will do
+              </h4>
+
+              <ul className="role-detail-list">
+                {selectedRole.tasks.map((task) => (
+                  <li key={task}>{task}</li>
+                ))}
+              </ul>
+
+            </div>
+          )}
+
+          {selectedRole && !formSubmitted && (
+            <div className="volunteer-application">
+
+              <h3>
+                Volunteer Application
+              </h3>
+
+              <p>
+                Apply for the role you selected by providing
+                your basic information.
+              </p>
+
+              <form
+                className="volunteer-form"
+                onSubmit={handleVolunteerSubmit}
+              >
+
+                <label htmlFor="name">
+                  Full Name
+                </label>
+
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="e.g. Aditi Sharma"
+                />
+
+                <label htmlFor="email">
+                  Email Address
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                />
+
+                <label htmlFor="availability">
+                  Availability
+                </label>
+
+                <select
+                  id="availability"
+                  name="availability"
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>
+                    Select your availability
+                  </option>
+
+                  <option>Weekdays</option>
+                  <option>Weekends</option>
+                  <option>Both weekdays and weekends</option>
+                  <option>Flexible</option>
+                </select>
+
+                <label htmlFor="skills">
+                  Skills / Experience
+                </label>
+
+                <textarea
+                  id="skills"
+                  name="skills"
+                  placeholder="Tell us briefly about your skills or experience"
+                />
+
+                <button
+                  className="btn btn-terracotta btn-lg mt-3"
+                  type="submit"
+                >
+                  Submit Application
+                </button>
+
+              </form>
+
+            </div>
+          )}
+
+          {formSubmitted && (
+            <div className="confirmation">
+
+              <span className="confirmation-mark">
+                ✓
+              </span>
+
+              <h3>
+                Application Submitted!
+              </h3>
+
+              <p>
+                Thank you for volunteering with Divanshi Foundation.
+                We have received your application.
+              </p>
+
+              <p>
+                Your Application ID is:
+              </p>
+
+              <span className="application-id">
+                {applicationId}
+              </span>
+
+              <div className="next-steps">
+
+                <h4>
+                  What happens next?
+                </h4>
+
+                <ol>
+                  <li>
+                    Our team will review your application.
+                  </li>
+
+                  <li>
+                    We will contact you using the email
+                    provided in your application.
+                  </li>
+
+                  <li>
+                    We will discuss the selected volunteer
+                    role and available opportunities.
+                  </li>
+
+                  <li>
+                    You will receive the next steps for
+                    joining the volunteer programme.
+                  </li>
+                </ol>
+
+              </div>
+
+              <button
+                className="btn btn-outline-dark mt-4"
+                type="button"
+                onClick={() => {
+                  setFormSubmitted(false)
+                  setSelectedRole(null)
+                  setApplicationId('')
+                }}
+              >
+                Apply for Another Role
+              </button>
+
+            </div>
+          )}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
       <section id="contact" className="container section-block py-5"><div className="row g-5"><div className="col-lg-5"><p className="eyebrow mb-3">Contact</p><h2 className="section-title">Let’s make something useful together.</h2><p className="body-copy mt-4">Questions, partnerships, teacher enquiries, feedback: our inbox is open.</p><p className="contact-email mt-4">hello@divanshifoundation.org</p></div><div className="col-lg-6 offset-lg-1"><div className="accordion accordion-flush" id="faq"><p className="eyebrow mb-3">Frequently asked</p>{faqs.map(([question, answer], index) => <div className="accordion-item" key={question}><h3 className="accordion-header"><button className={`accordion-button ${index === 0 ? '' : 'collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#faq-${index}`} aria-expanded={index === 0} aria-controls={`faq-${index}`}>{question}</button></h3><div id={`faq-${index}`} className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`} data-bs-parent="#faq"><div className="accordion-body">{answer}</div></div></div>)}</div></div></div></section>
 
       <section id="press" className="press-band py-5"><div className="container py-3 d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-4"><div><p className="eyebrow mb-3">Press release</p><h2 className="press-title mb-0">The latest from Divanshi Foundation.</h2></div><a className="btn btn-outline-dark" href="#contact">View updates</a></div></section>
