@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ClassesActivities from "./pages/programs/program-overview/program-details/classes-activities/ClassesActivities";
 
 const impactAreas = [
   { value: '12+', label: 'communities reached' },
@@ -109,6 +110,8 @@ function App() {
           </div>
         </div>
       </section>
+      <ClassesActivities />
+
 
       <section id="transparency" className="container section-block py-5"><div className="row g-5 align-items-center"><div className="col-lg-6"><p className="eyebrow mb-3">Reports & transparency</p><h2 className="section-title">Trust is something we practise.</h2><p className="body-copy mt-4">We share the outcomes, lessons, and decisions behind our work so supporters can see where care becomes change.</p><a className="btn btn-outline-dark mt-2" href="#contact">Explore our reports</a></div><div className="col-lg-5 offset-lg-1"><div className="report-note"><span className="report-year">2025</span><strong>Annual impact report</strong><span>Coming soon</span></div></div></div></section>
 
