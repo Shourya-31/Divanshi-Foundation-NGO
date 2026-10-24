@@ -1,10 +1,7 @@
 import { useState } from 'react'
-
-const impactAreas = [
-  { value: '12+', label: 'communities reached' },
-  { value: '4.8k', label: 'children supported' },
-  { value: '86', label: 'active volunteers' },
-]
+import ImpactMetrics from './pages/home/impact-metrics/ImpactMetrics'
+import ChildrenAndSchoolsReached from './pages/home/children-and-schools-reached/ChildrenAndSchoolsReached'
+import ViewImpact from './pages/home/view-impact/ViewImpact'
 
 const programs = [
   ['Learning circles', 'Small-group sessions that make foundational learning joyful, consistent, and accessible.'],
@@ -53,7 +50,7 @@ function App() {
             </p>
             <div className="d-flex flex-wrap gap-3">
               <a className="btn btn-terracotta btn-lg px-4" href="#programs">Discover our mission</a>
-              <a className="btn btn-outline-dark btn-lg px-4" href="#impact">View our impact</a>
+              <a className="btn btn-outline-dark btn-lg px-4" href="#view-impact">View our impact</a>
             </div>
           </div>
           <div className="col-lg-5">
@@ -70,17 +67,9 @@ function App() {
           </div>
         </div>
       </section>
-
-      <section id="impact" className="container py-5">
-        <div className="impact-strip row g-0">
-          {impactAreas.map((item) => (
-            <div className="col-md-4 impact-stat" key={item.label}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ViewImpact />
+      <ImpactMetrics />
+      <ChildrenAndSchoolsReached />
 
       <section id="about" className="container section-block py-5">
         <div className="row g-5 align-items-start">
